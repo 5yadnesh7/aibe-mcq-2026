@@ -4,326 +4,343 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AIBE MCQ Practice</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ─── TOKENS ─────────────────────────────────────────────── */
 :root{
-  --bg:        #0c0f14;
-  --surface:   #13181f;
-  --surface2:  #1a2130;
-  --border:    #252d3a;
-  --border2:   #2f3c50;
-  --accent:    #d4a54a;
-  --accent2:   #f0c97a;
-  --accent-bg: rgba(212,165,74,.08);
-  --green:     #3ecf8e;
-  --green-bg:  rgba(62,207,142,.10);
-  --red:       #f06a6a;
-  --red-bg:    rgba(240,106,106,.10);
-  --blue:      #60a5fa;
-  --blue-bg:   rgba(96,165,250,.10);
-  --purple:    #a78bfa;
-  --purple-bg: rgba(167,139,250,.10);
-  --text:      #e8edf5;
-  --text2:     #8a97ab;
-  --text3:     #55647a;
-  --serif:     'Cormorant Garamond', Georgia, serif;
-  --sans:      'Outfit', sans-serif;
-  --r:         10px;
-  --r2:        16px;
-  --shadow:    0 8px 32px rgba(0,0,0,.45);
+  --bg:#0c0f14;--surface:#13181f;--surface2:#1a2130;--surface3:#202a38;
+  --border:#252d3a;--border2:#2f3c50;
+  --accent:#d4a54a;--accent2:#f0c97a;--accent-bg:rgba(212,165,74,.08);
+  --green:#3ecf8e;--green-bg:rgba(62,207,142,.10);
+  --red:#f06a6a;--red-bg:rgba(240,106,106,.10);
+  --blue:#60a5fa;--blue-bg:rgba(96,165,250,.10);
+  --purple:#a78bfa;--purple-bg:rgba(167,139,250,.10);
+  --orange:#fb923c;--orange-bg:rgba(251,146,60,.10);
+  --text:#e8edf5;--text2:#8a97ab;--text3:#55647a;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',sans-serif;
+  --r:10px;--r2:16px;--shadow:0 8px 32px rgba(0,0,0,.45);
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;line-height:1.6}
-
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--surface)}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:99px}
 ::-webkit-scrollbar-thumb:hover{background:var(--accent)}
 
-/* ─── HEADER ─────────────────────────────────────────────── */
-header{
-  position:sticky;top:0;z-index:200;
-  background:rgba(12,15,20,.9);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-bottom:1px solid var(--border);
-  padding:0 28px;height:62px;
-  display:flex;align-items:center;gap:14px;
-}
-.h-icon{
-  width:34px;height:34px;flex-shrink:0;
-  background:linear-gradient(135deg,var(--accent),var(--accent2));
-  border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--serif);font-size:17px;font-weight:700;color:var(--bg);
-}
-.h-title{font-family:var(--serif);font-size:19px;font-weight:700;color:var(--text);letter-spacing:.01em}
-.h-sub{font-size:10px;font-weight:500;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;margin-top:-2px}
+/* HEADER */
+header{position:sticky;top:0;z-index:300;background:rgba(12,15,20,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--border);padding:0 24px;height:60px;display:flex;align-items:center;gap:12px}
+.h-icon{width:32px;height:32px;flex-shrink:0;background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:700;color:var(--bg)}
+.h-title{font-family:var(--serif);font-size:18px;font-weight:700;color:var(--text)}
+.h-sub{font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin-top:-2px}
 .h-spacer{flex:1}
 
-/* MODE TOGGLE */
-.mode-toggle{
-  display:flex;align-items:center;
-  background:var(--surface2);
-  border:1px solid var(--border2);
-  border-radius:10px;
-  padding:3px;gap:2px;
-}
-.mode-btn{
-  display:flex;align-items:center;gap:6px;
-  padding:6px 14px;
-  border:none;border-radius:7px;
-  font-family:var(--sans);font-size:12px;font-weight:600;
-  cursor:pointer;transition:all .2s;
-  color:var(--text3);background:transparent;
-  white-space:nowrap;
-}
-.mode-btn .mode-icon{font-size:13px}
-.mode-btn.active-study{
-  background:var(--green-bg);
-  color:var(--green);
-  border:1px solid rgba(62,207,142,.25);
-}
-.mode-btn.active-exam{
-  background:var(--purple-bg);
-  color:var(--purple);
-  border:1px solid rgba(167,139,250,.25);
-}
-.mode-btn:not(.active-study):not(.active-exam):hover{color:var(--text2);background:var(--border)}
+/* NAV TABS */
+.nav-tabs{display:flex;align-items:center;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:3px;gap:2px}
+.nav-tab{display:flex;align-items:center;gap:6px;padding:6px 14px;border:none;border-radius:7px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text3);background:transparent;white-space:nowrap}
+.nav-tab:hover{color:var(--text2)}
+.nav-tab.active-practice{background:var(--accent-bg);color:var(--accent2);border:1px solid rgba(212,165,74,.2)}
+.nav-tab.active-mock{background:var(--purple-bg);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
 
-/* MODE INDICATOR BANNER */
-.mode-banner{
-  display:flex;align-items:center;gap:10px;
-  padding:10px 16px;
-  border-radius:var(--r);
-  margin-bottom:20px;
-  font-size:13px;font-weight:500;
-  animation:fadeUp .3s ease;
-}
-.mode-banner.study{
-  background:var(--green-bg);
-  border:1px solid rgba(62,207,142,.2);
-  color:var(--green);
-}
-.mode-banner.exam{
-  background:var(--purple-bg);
-  border:1px solid rgba(167,139,250,.2);
-  color:var(--purple);
-}
-.mode-banner strong{font-weight:700;margin-right:4px}
-.mode-banner span{color:var(--text3);font-size:12px}
+/* MODE TOGGLE (inside practice) */
+.mode-toggle{display:flex;align-items:center;background:var(--surface2);border:1px solid var(--border2);border-radius:10px;padding:3px;gap:2px}
+.mode-btn{display:flex;align-items:center;gap:5px;padding:5px 12px;border:none;border-radius:7px;font-family:var(--sans);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;color:var(--text3);background:transparent}
+.mode-btn.active-study{background:var(--green-bg);color:var(--green);border:1px solid rgba(62,207,142,.25)}
+.mode-btn.active-exam{background:var(--purple-bg);color:var(--purple);border:1px solid rgba(167,139,250,.25)}
 
-.h-stats{display:flex;gap:6px;opacity:0;transition:opacity .4s}
+.h-stats{display:flex;gap:5px;opacity:0;transition:opacity .4s}
 .h-stats.show{opacity:1}
-.hstat{
-  display:flex;align-items:center;gap:6px;
-  background:var(--surface2);border:1px solid var(--border);
-  border-radius:8px;padding:5px 11px;font-size:12px;font-weight:500;
-  white-space:nowrap;
-}
-.hstat .dot{width:7px;height:7px;border-radius:50%}
+.hstat{display:flex;align-items:center;gap:5px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:4px 10px;font-size:11px;font-weight:500;white-space:nowrap}
+.hstat .dot{width:6px;height:6px;border-radius:50%}
 .hstat.total .dot{background:var(--accent)}
 .hstat.score .dot{background:var(--green)}
 .hstat .val{color:var(--accent2);font-weight:700}
 
-/* ─── LAYOUT ─────────────────────────────────────────────── */
-.shell{display:flex;min-height:calc(100vh - 62px)}
+/* LAYOUT */
+.shell{display:flex;min-height:calc(100vh - 60px)}
 
-/* ─── SIDEBAR ────────────────────────────────────────────── */
-.sidebar{
-  width:264px;flex-shrink:0;
-  background:var(--surface);border-right:1px solid var(--border);
-  position:sticky;top:62px;height:calc(100vh - 62px);
-  overflow-y:auto;padding:14px 0;
-}
-.sb-head{padding:4px 18px 12px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border);margin-bottom:6px}
-.cat-btn{
-  display:flex;align-items:center;gap:10px;width:100%;
-  padding:10px 18px;background:none;border:none;cursor:pointer;
-  text-align:left;font-family:var(--sans);font-size:13px;font-weight:400;
-  color:var(--text2);transition:all .15s;border-left:2px solid transparent;position:relative;
-}
+/* SIDEBAR */
+.sidebar{width:256px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:60px;height:calc(100vh - 60px);overflow-y:auto;padding:12px 0}
+.sb-head{padding:4px 16px 10px;font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--text3);border-bottom:1px solid var(--border);margin-bottom:6px}
+.cat-btn{display:flex;align-items:center;gap:8px;width:100%;padding:9px 16px;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--sans);font-size:12.5px;color:var(--text2);transition:all .15s;border-left:2px solid transparent;position:relative}
 .cat-btn:hover{background:var(--surface2);color:var(--text)}
 .cat-btn.active{background:var(--accent-bg);border-left-color:var(--accent);color:var(--accent2);font-weight:600}
-.cat-label{flex:1;line-height:1.35}
-.cat-pill .cnt{font-size:11px;font-weight:700;background:var(--border2);color:var(--text3);padding:1px 7px;border-radius:20px}
+.cat-label{flex:1;line-height:1.3}
+.cat-pill .cnt{font-size:10px;font-weight:700;background:var(--border2);color:var(--text3);padding:1px 6px;border-radius:20px}
 .cat-btn.active .cat-pill .cnt{background:var(--accent);color:var(--bg)}
 .cat-progress{position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--border);overflow:hidden}
 .cat-progress-fill{height:100%;background:var(--green);transition:width .4s ease}
 
-/* ─── MAIN ───────────────────────────────────────────────── */
-.main{flex:1;padding:32px 40px;max-width:860px}
+/* MAIN */
+.main{flex:1;padding:28px 36px;min-width:0}
+@media(max-width:900px){.sidebar{width:200px}.main{padding:20px 16px}}
+@media(max-width:640px){.shell{flex-direction:column}.sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid var(--border)}.main{padding:16px 12px}header{padding:0 12px}.nav-tab .nt-label{display:none}.h-stats{display:none!important}}
 
-@media(max-width:900px){.sidebar{width:210px}.main{padding:22px 18px}}
-@media(max-width:640px){
-  .shell{flex-direction:column}
-  .sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:1px solid var(--border)}
-  .main{padding:18px 12px}
-  header{padding:0 14px;gap:8px}
-  .mode-btn .mode-label{display:none}
-  .h-stats{display:none!important}
-}
-
-/* ─── LOADING ────────────────────────────────────────────── */
+/* LOADER */
 .loader{display:flex;flex-direction:column;align-items:center;justify-content:center;height:60vh;gap:20px}
-.spin{width:40px;height:40px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
+.spin{width:38px;height:38px;border:2px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loader p{font-size:13px;color:var(--text3);letter-spacing:.06em}
-.err-box{background:var(--red-bg);border:1px solid var(--red);border-radius:var(--r2);padding:24px 28px;color:var(--red);max-width:480px;margin:60px auto}
-.err-box strong{display:block;margin-bottom:8px;font-size:16px}
+.loader p{font-size:13px;color:var(--text3)}
+.err-box{background:var(--red-bg);border:1px solid var(--red);border-radius:var(--r2);padding:22px 26px;color:var(--red);max-width:460px;margin:50px auto}
+.err-box strong{display:block;margin-bottom:6px;font-size:15px}
 
-/* ─── SECTION HEADER ─────────────────────────────────────── */
-.sec-head{margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--border)}
-.sec-head h2{font-family:var(--serif);font-size:30px;font-weight:700;color:var(--text);letter-spacing:.01em;line-height:1.2;margin-bottom:10px}
-.sec-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-.badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;letter-spacing:.04em}
+/* PRACTICE SECTION */
+.mode-banner{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:var(--r);margin-bottom:18px;font-size:12px;font-weight:500;animation:fadeUp .3s ease}
+.mode-banner.study{background:var(--green-bg);border:1px solid rgba(62,207,142,.2);color:var(--green)}
+.mode-banner.exam{background:var(--purple-bg);border:1px solid rgba(167,139,250,.2);color:var(--purple)}
+.mode-banner strong{font-weight:700;margin-right:3px}
+.mode-banner span{color:var(--text3);font-size:11px}
+
+.sec-head{margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.sec-head h2{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--text);margin-bottom:10px}
+.sec-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.badge{font-size:10px;font-weight:600;padding:2px 9px;border-radius:20px;letter-spacing:.04em}
 .badge.gold{background:var(--accent-bg);color:var(--accent2);border:1px solid rgba(212,165,74,.2)}
 .badge.blue{background:var(--blue-bg);color:var(--blue);border:1px solid rgba(96,165,250,.2)}
 .badge.green{background:var(--green-bg);color:var(--green);border:1px solid rgba(62,207,142,.2)}
 .badge.red{background:var(--red-bg);color:var(--red);border:1px solid rgba(240,106,106,.2)}
+.badge.purple{background:var(--purple-bg);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
 
-.prog-wrap{background:var(--surface2);border-radius:99px;height:4px;margin:0 0 28px;overflow:hidden}
+.prog-wrap{background:var(--surface2);border-radius:99px;height:4px;margin:0 0 24px;overflow:hidden}
 .prog-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--green));border-radius:99px;transition:width .5s cubic-bezier(.4,0,.2,1)}
 
-/* ─── SCORE BANNER ───────────────────────────────────────── */
-.score-banner{
-  background:var(--surface2);border:1px solid var(--border2);border-top:3px solid var(--accent);
-  border-radius:var(--r2);padding:24px 28px;margin-bottom:28px;
-  display:flex;align-items:center;gap:24px;flex-wrap:wrap;animation:fadeUp .5s ease;
-}
-.sb-pct{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--accent);line-height:1}
-.sb-info h3{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:3px}
-.sb-info p{font-size:13px;color:var(--text3)}
-.sb-nums{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
-.sn-item{text-align:center}
-.sn-item .v{font-family:var(--serif);font-size:26px;font-weight:700;line-height:1}
-.sn-item .l{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);display:block;margin-top:2px}
-.v.g{color:var(--green)}.v.r{color:var(--red)}.v.m{color:var(--accent)}
-
-/* ─── QUESTION CARD ──────────────────────────────────────── */
-.q-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r2);padding:26px;margin-bottom:14px;
-  position:relative;transition:border-color .2s,box-shadow .2s;
-  animation:fadeUp .3s ease both;
-}
-.q-card:hover{border-color:var(--border2);box-shadow:var(--shadow)}
-
-/* Study mode card highlight */
-.q-card.study-card{border-left:3px solid var(--green)}
-
+/* QUESTION CARD */
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin-bottom:12px;position:relative;transition:border-color .2s,box-shadow .2s;animation:fadeUp .3s ease both}
+.q-card:hover{border-color:var(--border2);box-shadow:var(--shadow)}
+.q-card.study-card{border-left:3px solid var(--green)}
+.q-tag{position:absolute;top:-1px;left:-1px;background:var(--surface2);border:1px solid var(--border2);border-top-left-radius:var(--r2);border-bottom-right-radius:var(--r);padding:2px 10px;font-size:10px;font-weight:700;letter-spacing:.06em;color:var(--accent)}
+.q-text{font-size:14.5px;line-height:1.7;color:var(--text);margin:20px 0 16px}
+.q-cat-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:var(--surface2);color:var(--text3);border:1px solid var(--border2);margin-bottom:10px}
 
-.q-tag{
-  position:absolute;top:-1px;left:-1px;
-  background:var(--surface2);border:1px solid var(--border2);
-  border-top-left-radius:var(--r2);border-bottom-right-radius:var(--r);
-  padding:3px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--accent);
-}
-.q-text{font-size:15px;font-weight:400;line-height:1.7;color:var(--text);margin:22px 0 18px}
-
-/* ─── OPTIONS ────────────────────────────────────────────── */
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:560px){.opts{grid-template-columns:1fr}}
-
-.opt{
-  display:flex;align-items:flex-start;gap:10px;
-  padding:12px 14px;border:1.5px solid var(--border2);border-radius:var(--r);
-  background:var(--surface2);cursor:pointer;text-align:left;
-  font-family:var(--sans);font-size:13px;font-weight:400;
-  line-height:1.5;color:var(--text2);transition:all .15s;
-}
+/* OPTIONS */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:540px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;border:1.5px solid var(--border2);border-radius:var(--r);background:var(--surface2);cursor:pointer;text-align:left;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--text2);transition:all .15s}
 .opt:hover:not(:disabled){border-color:var(--accent);color:var(--text);background:var(--accent-bg)}
 .opt:disabled{cursor:default}
-.opt-key{
-  flex-shrink:0;width:22px;height:22px;background:var(--border2);border-radius:6px;
-  font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;
-  color:var(--text3);margin-top:1px;transition:all .15s;
-}
-
-/* State classes */
+.opt-key{flex-shrink:0;width:21px;height:21px;background:var(--border2);border-radius:5px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--text3);margin-top:1px;transition:all .15s}
 .opt.correct{border-color:var(--green)!important;background:var(--green-bg)!important;color:var(--text)!important}
 .opt.correct .opt-key{background:var(--green);color:var(--bg)}
 .opt.wrong{border-color:var(--red)!important;background:var(--red-bg)!important;color:var(--text2)!important}
 .opt.wrong .opt-key{background:var(--red);color:#fff}
-.opt.dimmed{opacity:.38}
-
-/* Study mode: correct always highlighted, selectable = just visual hover */
+.opt.dimmed{opacity:.35}
 .opt.study-correct{border-color:var(--green)!important;background:var(--green-bg)!important;color:var(--text)!important}
 .opt.study-correct .opt-key{background:var(--green);color:var(--bg)}
-
-/* Exam mode: pending selection highlight */
 .opt.exam-selected{border-color:var(--purple)!important;background:var(--purple-bg)!important;color:var(--text)!important}
 .opt.exam-selected .opt-key{background:var(--purple);color:#fff}
 
-/* ─── RESULT ROW ─────────────────────────────────────────── */
-.result-row{margin-top:14px;padding-top:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:10px}
-.result-line{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.result-badge{font-size:11px;font-weight:700;padding:3px 11px;border-radius:20px;letter-spacing:.04em}
+/* RESULT / RATIONALE */
+.result-row{margin-top:12px;padding-top:11px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:9px}
+.result-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.result-badge{font-size:10px;font-weight:700;padding:2px 10px;border-radius:20px;letter-spacing:.04em}
 .result-badge.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(62,207,142,.25)}
 .result-badge.no{background:var(--red-bg);color:var(--red);border:1px solid rgba(240,106,106,.25)}
-.result-ans{font-size:13px;color:var(--text2)}
+.result-ans{font-size:12px;color:var(--text2)}
 .result-ans strong{color:var(--accent2);font-weight:600}
-
-/* ─── RATIONALE ──────────────────────────────────────────── */
-.rationale{
-  background:rgba(212,165,74,.05);border:1px solid rgba(212,165,74,.15);
-  border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;
-  padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text2);
-  animation:fadeUp .25s ease;
-}
-.rationale .rat-label{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:5px;display:block}
-
-/* Study mode: rationale always visible, slightly different style */
+.rationale{background:rgba(212,165,74,.05);border:1px solid rgba(212,165,74,.15);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;font-size:12px;line-height:1.65;color:var(--text2);animation:fadeUp .25s ease}
+.rationale .rat-label{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;display:block}
 .rationale.study-always{background:rgba(62,207,142,.04);border-color:rgba(62,207,142,.2);border-left-color:var(--green)}
 .rationale.study-always .rat-label{color:var(--green)}
 
-/* ─── EXAM CHECK BUTTON ──────────────────────────────────── */
-.check-btn{
-  margin-top:14px;padding:9px 20px;
-  background:var(--purple-bg);
-  border:1.5px solid rgba(167,139,250,.35);
-  border-radius:var(--r);
-  font-family:var(--sans);font-size:13px;font-weight:600;
-  color:var(--purple);cursor:pointer;transition:all .15s;
-  display:inline-flex;align-items:center;gap:7px;
-}
-.check-btn:hover{background:rgba(167,139,250,.18);border-color:var(--purple)}
-.check-btn:disabled{opacity:.4;cursor:default}
-
-.show-btn{
-  margin-top:12px;padding:7px 14px;
-  background:none;border:1px solid var(--border2);border-radius:var(--r);
-  color:var(--text3);font-family:var(--sans);font-size:12px;font-weight:500;
-  cursor:pointer;transition:all .15s;
-}
+.check-btn{margin-top:12px;padding:8px 18px;background:var(--purple-bg);border:1.5px solid rgba(167,139,250,.35);border-radius:var(--r);font-family:var(--sans);font-size:12px;font-weight:600;color:var(--purple);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.check-btn:hover{background:rgba(167,139,250,.18)}
+.check-btn:disabled{opacity:.35;cursor:default}
+.show-btn{margin-top:10px;padding:6px 13px;background:none;border:1px solid var(--border2);border-radius:var(--r);color:var(--text3);font-family:var(--sans);font-size:11px;font-weight:500;cursor:pointer;transition:all .15s}
 .show-btn:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-bg)}
 
-/* ─── PAGINATION ─────────────────────────────────────────── */
-.pager{display:flex;align-items:center;gap:6px;margin-top:28px;flex-wrap:wrap}
-.pg-btn{
-  padding:6px 13px;border:1px solid var(--border2);border-radius:var(--r);
-  background:var(--surface2);font-family:var(--sans);font-size:12px;font-weight:500;
-  cursor:pointer;color:var(--text2);transition:all .15s;
-}
+/* SCORE BANNER */
+.score-banner{background:var(--surface2);border:1px solid var(--border2);border-top:3px solid var(--accent);border-radius:var(--r2);padding:22px 26px;margin-bottom:24px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;animation:fadeUp .5s ease}
+.sb-pct{font-family:var(--serif);font-size:52px;font-weight:700;color:var(--accent);line-height:1}
+.sb-info h3{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:2px}
+.sb-info p{font-size:12px;color:var(--text3)}
+.sb-nums{margin-left:auto;display:flex;gap:16px;flex-wrap:wrap}
+.sn-item{text-align:center}
+.sn-item .v{font-family:var(--serif);font-size:24px;font-weight:700;line-height:1}
+.sn-item .l{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);display:block;margin-top:2px}
+.v.g{color:var(--green)}.v.r{color:var(--red)}.v.m{color:var(--accent)}.v.o{color:var(--orange)}
+
+/* PAGINATION */
+.pager{display:flex;align-items:center;gap:5px;margin-top:24px;flex-wrap:wrap}
+.pg-btn{padding:5px 11px;border:1px solid var(--border2);border-radius:var(--r);background:var(--surface2);font-family:var(--sans);font-size:11px;font-weight:500;cursor:pointer;color:var(--text2);transition:all .15s}
 .pg-btn:hover:not(:disabled){border-color:var(--accent);color:var(--accent2);background:var(--accent-bg)}
 .pg-btn:disabled{opacity:.3;cursor:default}
 .pg-btn.cur{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}
-.pg-sep{color:var(--text3);font-size:12px;padding:0 3px}
-.pg-info{font-size:11px;color:var(--text3);margin-left:6px}
-
-/* ─── RESET BTN ──────────────────────────────────────────── */
-.reset-btn{
-  margin-top:28px;padding:9px 22px;
-  background:transparent;border:1.5px solid var(--accent);border-radius:var(--r);
-  font-family:var(--sans);font-size:13px;font-weight:600;
-  color:var(--accent2);cursor:pointer;transition:all .15s;
-  display:inline-flex;align-items:center;gap:7px;
-}
+.pg-sep{color:var(--text3);font-size:11px;padding:0 2px}
+.pg-info{font-size:11px;color:var(--text3);margin-left:5px}
+.reset-btn{margin-top:24px;padding:8px 20px;background:transparent;border:1.5px solid var(--accent);border-radius:var(--r);font-family:var(--sans);font-size:12px;font-weight:600;color:var(--accent2);cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
 .reset-btn:hover{background:var(--accent-bg)}
+
+/* ══════════════════════════════════════════════
+   MOCK EXAM SECTION
+══════════════════════════════════════════════ */
+.mock-wrap{flex:1;padding:28px 36px;min-width:0}
+@media(max-width:700px){.mock-wrap{padding:16px 12px}}
+
+/* LANDING */
+.mock-landing{}
+.mock-hero{background:linear-gradient(135deg,rgba(167,139,250,.08),rgba(212,165,74,.06));border:1px solid var(--border2);border-radius:var(--r2);padding:32px 36px;margin-bottom:28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.mock-hero-text h2{font-family:var(--serif);font-size:32px;font-weight:700;margin-bottom:8px}
+.mock-hero-text p{font-size:13px;color:var(--text2);max-width:420px;line-height:1.6}
+.mock-hero-meta{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.meta-pill{display:flex;align-items:center;gap:6px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text2)}
+.meta-pill .mi{font-size:14px}
+.mock-hero .start-btn{margin-left:auto;flex-shrink:0}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 22px;border-radius:var(--r);font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;transition:all .18s;border:none}
+.btn-primary{background:linear-gradient(135deg,var(--purple),#7c3aed);color:#fff;box-shadow:0 4px 16px rgba(124,58,237,.3)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(124,58,237,.4)}
+.btn-accent{background:linear-gradient(135deg,var(--accent),var(--accent2));color:var(--bg);font-weight:700}
+.btn-accent:hover{transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--border2);color:var(--text2)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent2);background:var(--accent-bg)}
+.btn-danger{background:var(--red-bg);border:1px solid rgba(240,106,106,.3);color:var(--red)}
+.btn-danger:hover{background:rgba(240,106,106,.2)}
+.btn-sm{padding:7px 14px;font-size:11px}
+
+/* TREND GRAPH */
+.trend-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:22px 24px;margin-bottom:24px}
+.trend-title{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:4px}
+.trend-sub{font-size:12px;color:var(--text3);margin-bottom:18px}
+.trend-chart-wrap{position:relative;height:140px;width:100%}
+canvas.trend-canvas{width:100%!important;height:140px!important}
+.trend-empty{height:100px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:13px}
+
+/* ATTEMPTS LIST */
+.attempts-section{}
+.attempts-title{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.attempts-grid{display:flex;flex-direction:column;gap:10px}
+.attempt-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:18px 22px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;transition:border-color .15s}
+.attempt-card:hover{border-color:var(--border2)}
+.ac-num{font-family:var(--serif);font-size:26px;font-weight:700;color:var(--purple);width:40px;flex-shrink:0;text-align:center}
+.ac-info{flex:1;min-width:0}
+.ac-date{font-size:13px;font-weight:600;color:var(--text);margin-bottom:3px}
+.ac-sub{font-size:11px;color:var(--text3)}
+.ac-stats{display:flex;gap:10px;flex-wrap:wrap}
+.ac-stat{text-align:center}
+.ac-stat .av{font-size:18px;font-weight:700;font-family:var(--serif)}
+.ac-stat .al{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3)}
+.ac-score-ring{flex-shrink:0}
+.score-ring-svg{transform:rotate(-90deg)}
+.score-ring-bg{fill:none;stroke:var(--border2);stroke-width:4}
+.score-ring-fill{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset .6s ease}
+
+/* MOCK EXAM ACTIVE */
+.mock-exam-active{}
+.mock-exam-header{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:16px 22px;margin-bottom:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;position:sticky;top:60px;z-index:100}
+.meh-title{font-family:var(--serif);font-size:18px;font-weight:600;flex:1}
+.timer-wrap{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;padding:7px 14px}
+.timer-icon{font-size:14px}
+.timer-val{font-family:'Outfit',monospace;font-size:16px;font-weight:700;color:var(--accent);letter-spacing:.06em;min-width:64px}
+.timer-val.warning{color:var(--orange);animation:pulse 1s infinite}
+.timer-val.danger{color:var(--red);animation:pulse .5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+.timer-status{font-size:10px;color:var(--text3)}
+
+.mock-progress-bar{background:var(--surface2);border-radius:99px;height:3px;margin-bottom:18px;overflow:hidden}
+.mock-progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--blue));border-radius:99px;transition:width .4s}
+
+/* MOCK QUESTION CARD */
+.mock-q-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:24px;margin-bottom:12px;position:relative;animation:fadeUp .25s ease both}
+.mock-q-card:hover{border-color:var(--border2)}
+.mock-q-tag{position:absolute;top:-1px;left:-1px;background:var(--surface2);border:1px solid var(--border2);border-top-left-radius:var(--r2);border-bottom-right-radius:var(--r);padding:2px 10px;font-size:10px;font-weight:700;color:var(--purple);letter-spacing:.05em}
+.mock-q-answered .mock-q-tag{background:var(--green-bg);border-color:rgba(62,207,142,.3);color:var(--green)}
+.mock-q-text{font-size:14.5px;line-height:1.7;color:var(--text);margin:20px 0 14px}
+.mock-opts{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:540px){.mock-opts{grid-template-columns:1fr}}
+.mock-opt{display:flex;align-items:flex-start;gap:9px;padding:11px 13px;border:1.5px solid var(--border2);border-radius:var(--r);background:var(--surface2);cursor:pointer;text-align:left;font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--text2);transition:all .15s}
+.mock-opt:hover:not(:disabled){border-color:var(--purple);color:var(--text);background:var(--purple-bg)}
+.mock-opt.selected{border-color:var(--purple)!important;background:var(--purple-bg)!important;color:var(--text)!important}
+.mock-opt.selected .mock-opt-key{background:var(--purple);color:#fff}
+.mock-opt-key{flex-shrink:0;width:21px;height:21px;background:var(--border2);border-radius:5px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--text3);margin-top:1px;transition:all .15s}
+
+/* SUBMIT AREA */
+.mock-submit-area{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r2);padding:24px 28px;margin-top:24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.msa-info{flex:1}
+.msa-info h3{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:4px}
+.msa-info p{font-size:12px;color:var(--text3)}
+.msa-counts{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
+.msa-count{font-size:12px;font-weight:600}
+.msa-count.c-ans{color:var(--purple)}
+.msa-count.c-skip{color:var(--orange)}
+
+/* ══════════════════════════════════════════════
+   RESULT SCREEN
+══════════════════════════════════════════════ */
+.result-screen{}
+.result-back{display:flex;align-items:center;gap:8px;background:none;border:none;color:var(--text3);font-family:var(--sans);font-size:12px;cursor:pointer;margin-bottom:20px;padding:0;transition:color .15s}
+.result-back:hover{color:var(--accent2)}
+
+.result-hero{background:linear-gradient(135deg,var(--surface2),var(--surface3));border:1px solid var(--border2);border-radius:var(--r2);padding:28px 32px;margin-bottom:22px;animation:fadeUp .4s ease}
+.rh-top{display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;margin-bottom:22px}
+.rh-score{text-align:center;flex-shrink:0}
+.rh-score .big{font-family:var(--serif);font-size:64px;font-weight:700;line-height:1;color:var(--accent)}
+.rh-score .lbl{font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em}
+.rh-details{flex:1}
+.rh-details h2{font-family:var(--serif);font-size:24px;font-weight:700;margin-bottom:6px}
+.rh-details .rh-date{font-size:12px;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.rh-stats{display:flex;gap:12px;flex-wrap:wrap}
+.rh-stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:10px 16px;text-align:center;min-width:70px}
+.rh-stat .sv{font-family:var(--serif);font-size:22px;font-weight:700;line-height:1}
+.rh-stat .sl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);display:block;margin-top:2px}
+
+/* CHARTS GRID */
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+@media(max-width:700px){.charts-grid{grid-template-columns:1fr}}
+.chart-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:20px 22px}
+.chart-card h3{font-family:var(--serif);font-size:16px;font-weight:600;margin-bottom:14px}
+.chart-container{position:relative;height:200px;display:flex;align-items:center;justify-content:center}
+.donut-wrap{position:relative;width:160px;height:160px}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.donut-center .dc-num{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--text);line-height:1}
+.donut-center .dc-lbl{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+.donut-legend{flex:1;padding-left:20px;display:flex;flex-direction:column;gap:10px}
+.dl-item{display:flex;align-items:center;gap:8px;font-size:12px}
+.dl-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+.dl-label{color:var(--text2);flex:1}
+.dl-val{font-weight:700;color:var(--text)}
+
+/* CATEGORY BAR CHART */
+.cat-bars{display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto;padding-right:4px}
+.cat-bar-row{display:flex;align-items:center;gap:10px}
+.cb-label{font-size:11px;color:var(--text2);width:100px;flex-shrink:0;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+.cb-track{flex:1;height:8px;background:var(--surface2);border-radius:99px;overflow:hidden;position:relative}
+.cb-fill-correct{height:100%;background:var(--green);border-radius:99px;transition:width .6s ease}
+.cb-fill-wrong{position:absolute;top:0;background:var(--red);height:100%;border-radius:99px;transition:width .6s ease}
+.cb-val{font-size:11px;color:var(--text2);width:40px;text-align:right;flex-shrink:0}
+
+/* RESULT FILTER TABS */
+.filter-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.filter-tab{padding:5px 14px;border:1px solid var(--border2);border-radius:20px;background:var(--surface2);font-family:var(--sans);font-size:11px;font-weight:600;cursor:pointer;color:var(--text3);transition:all .15s}
+.filter-tab:hover{color:var(--text2)}
+.filter-tab.active{background:var(--surface3);color:var(--text);border-color:var(--border2)}
+.filter-tab.ft-correct.active{background:var(--green-bg);color:var(--green);border-color:rgba(62,207,142,.3)}
+.filter-tab.ft-wrong.active{background:var(--red-bg);color:var(--red);border-color:rgba(240,106,106,.3)}
+.filter-tab.ft-skip.active{background:var(--orange-bg);color:var(--orange);border-color:rgba(251,146,60,.3)}
+
+/* RESULT QUESTION CARD */
+.rq-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:22px;margin-bottom:10px;animation:fadeUp .2s ease both}
+.rq-header{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.rq-num{font-size:11px;font-weight:700;color:var(--text3)}
+.rq-status{font-size:10px;font-weight:700;padding:2px 9px;border-radius:20px;letter-spacing:.04em}
+.rq-status.ok{background:var(--green-bg);color:var(--green);border:1px solid rgba(62,207,142,.25)}
+.rq-status.no{background:var(--red-bg);color:var(--red);border:1px solid rgba(240,106,106,.25)}
+.rq-status.skip{background:var(--orange-bg);color:var(--orange);border:1px solid rgba(251,146,60,.25)}
+.rq-cat{font-size:10px;color:var(--text3);background:var(--surface2);border:1px solid var(--border2);padding:2px 7px;border-radius:20px;margin-left:auto}
+.rq-text{font-size:14px;line-height:1.65;color:var(--text);margin-bottom:12px}
+.rq-options{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px}
+@media(max-width:540px){.rq-options{grid-template-columns:1fr}}
+.rq-opt{display:flex;align-items:flex-start;gap:8px;padding:9px 12px;border:1px solid var(--border2);border-radius:var(--r);background:var(--surface2);font-size:12px;color:var(--text3)}
+.rq-opt.rq-correct{border-color:var(--green);background:var(--green-bg);color:var(--text)}
+.rq-opt.rq-chosen-wrong{border-color:var(--red);background:var(--red-bg);color:var(--text2)}
+.rq-opt.rq-skipped-correct{border-color:var(--orange);background:var(--orange-bg);color:var(--text2)}
+.rq-opt-key{flex-shrink:0;width:19px;height:19px;background:var(--border2);border-radius:4px;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--text3)}
+.rq-opt.rq-correct .rq-opt-key{background:var(--green);color:var(--bg)}
+.rq-opt.rq-chosen-wrong .rq-opt-key{background:var(--red);color:#fff}
+.rq-rationale{background:rgba(212,165,74,.05);border:1px solid rgba(212,165,74,.12);border-left:3px solid var(--accent);border-radius:0 var(--r) var(--r) 0;padding:9px 12px;font-size:11.5px;line-height:1.6;color:var(--text2)}
+.rq-rationale .rl{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px;display:block}
+</style>
 </style>
 </head>
 <body>
@@ -332,422 +349,835 @@ header{
   <div class="h-icon">⚖</div>
   <div>
     <div class="h-title">AIBE Prep</div>
-    <div class="h-sub">All India Bar Examination · MCQ Practice</div>
+    <div class="h-sub">All India Bar Examination</div>
   </div>
   <div class="h-spacer"></div>
-
-  <!-- MODE TOGGLE -->
-  <div class="mode-toggle" id="modeToggle">
-    <button class="mode-btn active-study" id="btnStudy" data-mode="study">
-      <span class="mode-icon">📖</span>
-      <span class="mode-label">Study</span>
+  <div class="nav-tabs" id="navTabs">
+    <button class="nav-tab active-practice" data-nav="practice">
+      <span>📚</span><span class="nt-label">Practice</span>
     </button>
-    <button class="mode-btn" id="btnExam" data-mode="exam">
-      <span class="mode-icon">📝</span>
-      <span class="mode-label">Exam</span>
+    <button class="nav-tab" data-nav="mock">
+      <span>🏛</span><span class="nt-label">Mock Exam</span>
     </button>
   </div>
-
+  <div id="modeToggleWrap">
+    <div class="mode-toggle">
+      <button class="mode-btn active-study" data-mode="study">📖 <span>Study</span></button>
+      <button class="mode-btn" data-mode="exam">📝 <span>Exam</span></button>
+    </div>
+  </div>
   <div class="h-stats" id="hStats">
-    <div class="hstat total"><span class="dot"></span><span class="val" id="hCats">0</span>&nbsp;categories&nbsp;·&nbsp;<span id="hTotal">0</span>&nbsp;Qs</div>
-    <div class="hstat score"><span class="dot"></span>Score:&nbsp;<span class="val" id="hScore">0 / 0</span></div>
+    <div class="hstat total"><span class="dot"></span><span class="val" id="hCats">0</span> cats · <span id="hTotal">0</span>Qs</div>
+    <div class="hstat score"><span class="dot"></span>Score: <span class="val" id="hScore">0/0</span></div>
   </div>
 </header>
 
-<div class="shell">
+<!-- PRACTICE VIEW -->
+<div id="practiceView" class="shell">
   <aside class="sidebar" id="sidebar">
     <div class="sb-head">Categories</div>
     <div id="catList"></div>
   </aside>
-  <main class="main" id="main">
-    <div class="loader" id="loader">
-      <div class="spin"></div>
-      <p>Loading question bank…</p>
-    </div>
-    <div id="content" style="display:none"></div>
+  <main class="main" id="practiceMain">
+    <div class="loader" id="loader"><div class="spin"></div><p>Loading question bank…</p></div>
+    <div id="practiceContent" style="display:none"></div>
   </main>
+</div>
+
+<!-- MOCK EXAM VIEW -->
+<div id="mockView" style="display:none">
+  <div class="mock-wrap" id="mockWrap">
+    <!-- dynamically filled -->
+  </div>
 </div>
 
 <script>
 const API = 'https://api.npoint.io/6f078d15ae65a4328684';
 const PER  = 10;
+const LS_PREFIX = 'aibe_mock_';
+const LS_ACTIVE = 'aibe_mock_active';
 
-let data = [];
-let cat  = 0;
-let mode = 'study'; // 'study' | 'exam'
-let pg   = {};      // pg[ci] = page index
-let st   = {};      // st[ci][qi] = {answered, chosen, revealed, examPending}
-                    // examPending = chosen but not yet checked in exam mode
+/* ── STATE ──────────────────────────────────────────────── */
+let data   = [];
+let pCat   = 0;
+let pMode  = 'study';
+let pPg    = {};
+let pSt    = {};
+let view   = 'practice'; // 'practice' | 'mock'
 
-/* ─── BOOT ─────────────────────────────────────────── */
+/* Mock exam state */
+let mockQuestions  = []; // [{...q, category, chosen:null}]
+let mockTimerSecs  = 3*60*60;
+let mockTimerStart = null; // timestamp when timer started
+let mockTimerInt   = null;
+let mockStarted    = false;
+
+/* ── BOOT ───────────────────────────────────────────────── */
 async function boot(){
   try{
     const r = await fetch(API);
     if(!r.ok) throw new Error(`HTTP ${r.status}`);
     let j = await r.json();
-    if(!Array.isArray(j)){
-      const k = Object.keys(j).find(k=>Array.isArray(j[k]));
-      j = k ? j[k] : [j];
-    }
-    data = j
-      .map(c=>({
-        title: c.title||c.name||c.category||'Untitled',
-        data:  Array.isArray(c.data)?c.data:Array.isArray(c.questions)?c.questions:[]
-      }))
-      .filter(c=>c.data.length);
+    if(!Array.isArray(j)){ const k=Object.keys(j).find(k=>Array.isArray(j[k])); j=k?j[k]:[j]; }
+    data = j.map(c=>({
+      title:     c.title||c.name||'Untitled',
+      weightage: parseInt(c.weightage)||0,
+      data:      Array.isArray(c.data)?c.data:Array.isArray(c.questions)?c.questions:[]
+    })).filter(c=>c.data.length);
     if(!data.length) throw new Error('No categories found.');
-    data.forEach((c,ci)=>{ pg[ci]=0; st[ci]={}; c.data.forEach((_,qi)=>initQ(ci,qi)); });
+    data.forEach((c,ci)=>{ pPg[ci]=0; pSt[ci]={}; c.data.forEach((_,qi)=>initQ(ci,qi)); });
     document.getElementById('hTotal').textContent = data.reduce((s,c)=>s+c.data.length,0);
     document.getElementById('hCats').textContent  = data.length;
     syncHeader();
     document.getElementById('hStats').classList.add('show');
     buildSidebar();
-    show(0);
+    showPractice(0);
   }catch(e){
-    document.getElementById('loader').innerHTML=`
-      <div class="err-box"><strong>⚠ Failed to load data</strong>
-      Could not reach the API.<br><br><small style="opacity:.5">${e.message}</small></div>`;
+    document.getElementById('loader').innerHTML=`<div class="err-box"><strong>⚠ Failed to load</strong>${e.message}</div>`;
   }
 }
+function initQ(ci,qi){pSt[ci][qi]={answered:false,chosen:null,revealed:false,examPending:false}}
 
-function initQ(ci,qi){
-  st[ci][qi]={answered:false,chosen:null,revealed:false,examPending:false};
+/* ── NAV ────────────────────────────────────────────────── */
+function setView(v){
+  view=v;
+  document.getElementById('practiceView').style.display = v==='practice'?'flex':'none';
+  document.getElementById('mockView').style.display      = v==='mock'?'block':'none';
+  document.getElementById('modeToggleWrap').style.display= v==='practice'?'':'none';
+  document.getElementById('hStats').style.display        = v==='practice'?'flex':'none';
+  document.querySelectorAll('.nav-tab').forEach(b=>{
+    b.className='nav-tab'+(b.dataset.nav===v?' active-'+v:'');
+  });
+  if(v==='mock') renderMockLanding();
 }
 
-/* ─── MODE SWITCH ──────────────────────────────────── */
-function setMode(m){
-  mode = m;
-  document.getElementById('btnStudy').className = 'mode-btn' + (m==='study'?' active-study':'');
-  document.getElementById('btnExam').className  = 'mode-btn' + (m==='exam'?' active-exam':'');
-  show(cat);
-}
-
-/* ─── SIDEBAR ──────────────────────────────────────── */
+/* ── PRACTICE SIDEBAR ───────────────────────────────────── */
 function buildSidebar(){
-  document.getElementById('catList').innerHTML = data.map((c,i)=>`
+  document.getElementById('catList').innerHTML=data.map((c,i)=>`
     <button class="cat-btn ${i===0?'active':''}" id="cb${i}" data-cat="${i}">
       <span class="cat-label">${c.title}</span>
       <span class="cat-pill"><span class="cnt">${c.data.length}</span></span>
       <div class="cat-progress"><div class="cat-progress-fill" id="cpf${i}" style="width:0%"></div></div>
     </button>`).join('');
 }
-
-function syncSidebarProgress(){
+function syncSBProgress(){
   data.forEach((_,ci)=>{
     const total=data[ci].data.length;
-    const done=Object.values(st[ci]).filter(s=>s.answered||s.revealed).length;
+    const done=Object.values(pSt[ci]).filter(s=>s.answered||s.revealed).length;
     const el=document.getElementById(`cpf${ci}`);
     if(el) el.style.width=total?(done/total*100)+'%':'0%';
   });
 }
-
 function syncHeader(){
-  let correct=0,answered=0;
-  data.forEach((c,ci)=>{
-    c.data.forEach((q,qi)=>{
-      const s=st[ci][qi];
-      if(s.answered){answered++;if(isOk(q,s.chosen))correct++;}
-    });
-  });
-  document.getElementById('hScore').textContent=`${correct} / ${answered}`;
+  let c=0,a=0;
+  data.forEach((cat,ci)=>cat.data.forEach((q,qi)=>{const s=pSt[ci][qi];if(s.answered){a++;if(isOk(q,s.chosen))c++;}}));
+  document.getElementById('hScore').textContent=`${c}/${a}`;
 }
 
-/* ─── RENDER ───────────────────────────────────────── */
-function show(idx){
-  cat=idx;
+/* ── PRACTICE RENDER ────────────────────────────────────── */
+function showPractice(idx){
+  pCat=idx;
   document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
   const cb=document.getElementById(`cb${idx}`);
   if(cb){cb.classList.add('active');cb.scrollIntoView({block:'nearest'})}
-
-  const c=data[idx], qs=c.data, p=pg[idx];
-  const start=p*PER, end=Math.min(start+PER,qs.length);
-  const total=Math.ceil(qs.length/PER);
-  const done=Object.values(st[idx]).filter(s=>s.answered).length;
-  const right=qs.reduce((a,q,qi)=>a+(st[idx][qi].answered&&isOk(q,st[idx][qi].chosen)?1:0),0);
+  const c=data[idx],qs=c.data,p=pPg[idx];
+  const start=p*PER,end=Math.min(start+PER,qs.length),total=Math.ceil(qs.length/PER);
+  const done=Object.values(pSt[idx]).filter(s=>s.answered).length;
+  const right=qs.reduce((a,q,qi)=>a+(pSt[idx][qi].answered&&isOk(q,pSt[idx][qi].chosen)?1:0),0);
   const pct=qs.length?Math.round(done/qs.length*100):0;
-
-  // Mode banner
-  const bannerHtml = mode==='study'
-    ? `<div class="mode-banner study">📖 <strong>Study Mode</strong> <span>Correct answers and rationale are shown immediately</span></div>`
-    : `<div class="mode-banner exam">📝 <strong>Exam Mode</strong> <span>Select an answer then tap "Check Answer" to see the result</span></div>`;
-
-  let h = bannerHtml + `
-    <div class="sec-head">
-      <h2>${c.title}</h2>
-      <div class="sec-meta">
-        <span class="badge gold">${qs.length} Questions</span>
-        <span class="badge blue">${done} Answered</span>
-        <span class="badge green">${right} Correct</span>
-        ${done-right>0?`<span class="badge red">${done-right} Wrong</span>`:''}
-      </div>
-    </div>
-    <div class="prog-wrap"><div class="prog-fill" style="width:${pct}%"></div></div>`;
-
+  const banner=pMode==='study'
+    ?`<div class="mode-banner study">📖 <strong>Study Mode</strong><span>Answers & rationale shown immediately</span></div>`
+    :`<div class="mode-banner exam">📝 <strong>Exam Mode</strong><span>Select → Check Answer</span></div>`;
+  let h=banner+`<div class="sec-head"><h2>${c.title}</h2><div class="sec-meta">
+    <span class="badge gold">${qs.length} Qs</span>
+    <span class="badge blue">${done} Answered</span>
+    <span class="badge green">${right} Correct</span>
+    ${done-right>0?`<span class="badge red">${done-right} Wrong</span>`:''}
+  </div></div><div class="prog-wrap"><div class="prog-fill" style="width:${pct}%"></div></div>`;
   if(done===qs.length&&qs.length>0){
     const sp=Math.round(right/qs.length*100);
-    h+=`<div class="score-banner">
-      <div class="sb-pct">${sp}%</div>
+    h+=`<div class="score-banner"><div class="sb-pct">${sp}%</div>
       <div class="sb-info"><h3>Section Complete</h3><p>${c.title}</p></div>
       <div class="sb-nums">
         <div class="sn-item"><div class="v g">${right}</div><span class="l">Correct</span></div>
         <div class="sn-item"><div class="v r">${done-right}</div><span class="l">Wrong</span></div>
         <div class="sn-item"><div class="v m">${qs.length}</div><span class="l">Total</span></div>
-      </div>
-    </div>`;
+      </div></div>`;
   }
-
   qs.slice(start,end).forEach((q,li)=>{
-    const qi=start+li;
-    const s=st[idx][qi];
-    const opts=q.options||q.Options||[];
-    const ans=q.correctAnswer||q.answer||q.correct_answer||'';
-    const rat=q.rationale||q.explanation||'';
-    const num=q.questionNumber||qi+1;
-
-    if(mode==='study'){
-      h+=renderStudy(idx,qi,q,opts,ans,rat,num,s,li);
-    } else {
-      h+=renderExam(idx,qi,q,opts,ans,rat,num,s,li);
-    }
+    const qi=start+li,s=pSt[idx][qi],opts=q.options||[],ans=q.correctAnswer||'',rat=q.rationale||'',num=q.questionNumber||qi+1;
+    h+=pMode==='study'?renderStudyCard(idx,qi,q,opts,ans,rat,num,s,li):renderExamCard(idx,qi,q,opts,ans,rat,num,s,li);
   });
-
-  // Pagination
   if(total>1){
     h+=`<div class="pager"><button class="pg-btn" data-pg-ci="${idx}" data-pg="${p-1}" ${p===0?'disabled':''}>← Prev</button>`;
-    pages(p,total).forEach(x=>{
-      if(x==='…') h+=`<span class="pg-sep">…</span>`;
-      else h+=`<button class="pg-btn ${x===p?'cur':''}" data-pg-ci="${idx}" data-pg="${x}">${x+1}</button>`;
-    });
-    h+=`<button class="pg-btn" data-pg-ci="${idx}" data-pg="${p+1}" ${p===total-1?'disabled':''}>Next →</button>
-      <span class="pg-info">Page ${p+1} of ${total}</span></div>`;
+    pages(p,total).forEach(x=>{ if(x==='…')h+=`<span class="pg-sep">…</span>`; else h+=`<button class="pg-btn ${x===p?'cur':''}" data-pg-ci="${idx}" data-pg="${x}">${x+1}</button>`; });
+    h+=`<button class="pg-btn" data-pg-ci="${idx}" data-pg="${p+1}" ${p===total-1?'disabled':''}>Next →</button><span class="pg-info">Page ${p+1}/${total}</span></div>`;
   }
-
-  if(done===qs.length&&qs.length>0){
-    h+=`<button class="reset-btn" data-reset-ci="${idx}">↺ Reset Section</button>`;
-  }
-
-  const loader=document.getElementById('loader');
-  const content=document.getElementById('content');
-  loader.style.display='none';
-  content.style.display='block';
-  content.innerHTML=h;
+  if(done===qs.length&&qs.length>0) h+=`<button class="reset-btn" data-reset-ci="${idx}">↺ Reset Section</button>`;
+  const loader=document.getElementById('loader'),content=document.getElementById('practiceContent');
+  loader.style.display='none';content.style.display='block';content.innerHTML=h;
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ─── STUDY CARD ───────────────────────────────────── */
-// In study mode: correct option always highlighted, rationale always shown
-function renderStudy(ci,qi,q,opts,ans,rat,num,s,li){
-  const delay=li*0.04;
-  let h=`<div class="q-card study-card" id="qc${qi}" style="animation-delay:${delay}s">
-    <div class="q-tag">Q ${num}</div>
-    <div class="q-text">${q.question||''}</div>
-    <div class="opts">`;
-
+function renderStudyCard(ci,qi,q,opts,ans,rat,num,s,li){
+  let h=`<div class="q-card study-card" id="qc${qi}" style="animation-delay:${li*.04}s">
+    <div class="q-tag">Q ${num}</div><div class="q-text">${q.question||''}</div><div class="opts">`;
   opts.forEach((o,oi)=>{
-    const key=String.fromCharCode(65+oi);
-    // Study mode: only highlight correct, never show wrong selections
-    let cls = matchOpt(q,o) ? 'study-correct' : '';
-    h+=`<button class="opt ${cls}" disabled
-          data-ci="${ci}" data-qi="${qi}" data-oi="${oi}">
-        <span class="opt-key">${key}</span><span>${o}</span>
-      </button>`;
+    const key=String.fromCharCode(65+oi),cls=matchOpt(q,o)?'study-correct':'';
+    h+=`<button class="opt ${cls}" disabled data-ci="${ci}" data-qi="${qi}" data-oi="${oi}">
+      <span class="opt-key">${key}</span><span>${o}</span></button>`;
   });
-
   h+=`</div>`;
   if(rat) h+=`<div class="result-row"><div class="rationale study-always"><span class="rat-label">💡 Rationale</span>${rat}</div></div>`;
-  h+=`</div>`;
-  return h;
+  return h+`</div>`;
 }
 
-/* ─── EXAM CARD ────────────────────────────────────── */
-// Exam mode: user picks option → "Check Answer" button → reveal correct/wrong
-function renderExam(ci,qi,q,opts,ans,rat,num,s,li){
-  const delay=li*0.04;
-  let h=`<div class="q-card" id="qc${qi}" style="animation-delay:${delay}s">
-    <div class="q-tag">Q ${num}</div>
-    <div class="q-text">${q.question||''}</div>
-    <div class="opts">`;
-
+function renderExamCard(ci,qi,q,opts,ans,rat,num,s,li){
+  let h=`<div class="q-card" id="qc${qi}" style="animation-delay:${li*.04}s">
+    <div class="q-tag">Q ${num}</div><div class="q-text">${q.question||''}</div><div class="opts">`;
   opts.forEach((o,oi)=>{
     const key=String.fromCharCode(65+oi);
-    let cls='', disabled=false;
-
-    if(s.answered){
-      // Already checked — show final result
-      if(matchOpt(q,o))     cls='correct';
-      else if(s.chosen===o) cls='wrong';
-      else                  cls='dimmed';
-      disabled=true;
-    } else if(s.examPending){
-      // Chosen but not yet checked
-      cls = s.chosen===o ? 'exam-selected' : '';
-      // allow re-selection before checking
-    }
-
-    h+=`<button class="opt ${cls}" ${disabled?'disabled':''}
-          data-ci="${ci}" data-qi="${qi}" data-oi="${oi}">
-        <span class="opt-key">${key}</span><span>${o}</span>
-      </button>`;
+    let cls='',dis=false;
+    if(s.answered){cls=matchOpt(q,o)?'correct':s.chosen===o?'wrong':'dimmed';dis=true;}
+    else if(s.examPending){cls=s.chosen===o?'exam-selected':'';}
+    h+=`<button class="opt ${cls}" ${dis?'disabled':''} data-ci="${ci}" data-qi="${qi}" data-oi="${oi}">
+      <span class="opt-key">${key}</span><span>${o}</span></button>`;
   });
-
   h+=`</div>`;
-
   if(s.answered){
-    // Result + rationale
     const ok=isOk(q,s.chosen);
-    h+=`<div class="result-row">
-      <div class="result-line">
-        <span class="result-badge ${ok?'ok':'no'}">${ok?'✓ Correct':'✗ Incorrect'}</span>
-        ${!ok?`<span class="result-ans">Correct: <strong>${ans}</strong></span>`:''}
-      </div>
-      ${rat?`<div class="rationale"><span class="rat-label">💡 Rationale</span>${rat}</div>`:''}
-    </div>`;
+    h+=`<div class="result-row"><div class="result-line"><span class="result-badge ${ok?'ok':'no'}">${ok?'✓ Correct':'✗ Incorrect'}</span>${!ok?`<span class="result-ans">Correct: <strong>${ans}</strong></span>`:''}</div>${rat?`<div class="rationale"><span class="rat-label">💡 Rationale</span>${rat}</div>`:''}</div>`;
   } else {
-    // Check button — enabled only after a selection
-    h+=`<button class="check-btn" data-check-ci="${ci}" data-check-qi="${qi}"
-          ${s.examPending?'':'disabled'}>
-        ✦ Check Answer
-      </button>`;
+    h+=`<button class="check-btn" data-check-ci="${ci}" data-check-qi="${qi}" ${s.examPending?'':'disabled'}>✦ Check Answer</button>`;
   }
-
-  h+=`</div>`;
-  return h;
+  return h+`</div>`;
 }
 
-/* ─── ACTIONS ──────────────────────────────────────── */
 function selectExamOpt(ci,qi,oi){
   const o=data[ci].data[qi].options[oi];
-  st[ci][qi].chosen=o;
-  st[ci][qi].examPending=true;
-  // Re-render just the options + button without full show() to avoid scroll jump
+  pSt[ci][qi].chosen=o;pSt[ci][qi].examPending=true;
   const card=document.getElementById(`qc${qi}`);
-  if(!card){show(ci);return;}
-  const q=data[ci].data[qi];
-  const opts=q.options||[];
-  // Update option classes
-  card.querySelectorAll('.opt').forEach((btn,i)=>{
-    btn.classList.remove('exam-selected','correct','wrong','dimmed');
-    if(opts[i]===o) btn.classList.add('exam-selected');
-  });
-  // Enable check button
-  const chk=card.querySelector('.check-btn');
-  if(chk) chk.disabled=false;
+  if(!card){showPractice(ci);return;}
+  card.querySelectorAll('.opt').forEach((b,i)=>{b.classList.remove('exam-selected');if(i===oi)b.classList.add('exam-selected');});
+  const chk=card.querySelector('.check-btn');if(chk)chk.disabled=false;
 }
 
-function checkAnswer(ci,qi){
-  const s=st[ci][qi];
-  if(!s.examPending||!s.chosen) return;
-  s.answered=true;
-  s.examPending=false;
-  syncSidebarProgress();
-  syncHeader();
-  // Re-render just this card in-place
-  const q=data[ci].data[qi];
-  const opts=q.options||[];
-  const ans=q.correctAnswer||q.answer||'';
-  const rat=q.rationale||'';
-  const card=document.getElementById(`qc${qi}`);
-  if(!card){show(ci);return;}
-  // Update options
-  card.querySelectorAll('.opt').forEach((btn,i)=>{
-    btn.classList.remove('exam-selected','correct','wrong','dimmed');
-    btn.disabled=true;
-    if(matchOpt(q,opts[i]))      btn.classList.add('correct');
-    else if(opts[i]===s.chosen)  btn.classList.add('wrong');
-    else                         btn.classList.add('dimmed');
+function checkPracticeAnswer(ci,qi){
+  const s=pSt[ci][qi];if(!s.examPending||!s.chosen)return;
+  s.answered=true;s.examPending=false;
+  syncSBProgress();syncHeader();
+  const q=data[ci].data[qi],opts=q.options||[],ans=q.correctAnswer||'',rat=q.rationale||'';
+  const card=document.getElementById(`qc${qi}`);if(!card){showPractice(ci);return;}
+  card.querySelectorAll('.opt').forEach((b,i)=>{
+    b.classList.remove('exam-selected','correct','wrong','dimmed');b.disabled=true;
+    if(matchOpt(q,opts[i]))b.classList.add('correct');
+    else if(opts[i]===s.chosen)b.classList.add('wrong');
+    else b.classList.add('dimmed');
   });
-  // Replace action area
   const ok=isOk(q,s.chosen);
-  let resultHtml=`<div class="result-row">
-    <div class="result-line">
-      <span class="result-badge ${ok?'ok':'no'}">${ok?'✓ Correct':'✗ Incorrect'}</span>
-      ${!ok?`<span class="result-ans">Correct: <strong>${ans}</strong></span>`:''}
-    </div>
-    ${rat?`<div class="rationale"><span class="rat-label">💡 Rationale</span>${rat}</div>`:''}
-  </div>`;
-  const chk=card.querySelector('.check-btn');
-  if(chk) chk.outerHTML=resultHtml;
-  // Scroll card into view
-  setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),60);
-  // Update section header badges
+  const res=`<div class="result-row"><div class="result-line"><span class="result-badge ${ok?'ok':'no'}">${ok?'✓ Correct':'✗ Incorrect'}</span>${!ok?`<span class="result-ans">Correct: <strong>${ans}</strong></span>`:''}</div>${rat?`<div class="rationale"><span class="rat-label">💡 Rationale</span>${rat}</div>`:''}</div>`;
+  const chk=card.querySelector('.check-btn');if(chk)chk.outerHTML=res;
+  setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+  // update badges
   const qs=data[ci].data;
-  const done=Object.values(st[ci]).filter(s=>s.answered).length;
-  const right=qs.reduce((a,q,qi)=>a+(st[ci][qi].answered&&isOk(q,st[ci][qi].chosen)?1:0),0);
-  const pct=qs.length?Math.round(done/qs.length*100):0;
+  const d=Object.values(pSt[ci]).filter(s=>s.answered).length;
+  const r=qs.reduce((a,q,qi)=>a+(pSt[ci][qi].answered&&isOk(q,pSt[ci][qi].chosen)?1:0),0);
+  const pct=qs.length?Math.round(d/qs.length*100):0;
   const meta=document.querySelector('.sec-meta');
-  if(meta) meta.innerHTML=`
-    <span class="badge gold">${qs.length} Questions</span>
-    <span class="badge blue">${done} Answered</span>
-    <span class="badge green">${right} Correct</span>
-    ${done-right>0?`<span class="badge red">${done-right} Wrong</span>`:''}`;
-  const pf=document.querySelector('.prog-fill');
-  if(pf) pf.style.width=pct+'%';
-  // Show full score banner if all done
-  if(done===qs.length) show(ci);
+  if(meta)meta.innerHTML=`<span class="badge gold">${qs.length} Qs</span><span class="badge blue">${d} Answered</span><span class="badge green">${r} Correct</span>${d-r>0?`<span class="badge red">${d-r} Wrong</span>`:''}`;
+  const pf=document.querySelector('.prog-fill');if(pf)pf.style.width=pct+'%';
+  if(d===qs.length)showPractice(ci);
 }
 
-function goP(ci,p){pg[ci]=p;show(ci);}
+/* ══════════════════════════════════════════════
+   MOCK EXAM
+══════════════════════════════════════════════ */
 
-function reset(ci){
-  pg[ci]=0;
-  data[ci].data.forEach((_,qi)=>initQ(ci,qi));
-  syncSidebarProgress();syncHeader();show(ci);
+function getMockAttempts(){
+  const keys=Object.keys(localStorage).filter(k=>k.startsWith(LS_PREFIX+'1')||k.startsWith(LS_PREFIX+'2'));
+  return keys.map(k=>{try{return JSON.parse(localStorage.getItem(k));}catch{return null;}}).filter(Boolean).sort((a,b)=>b.timestamp-a.timestamp);
 }
 
-/* ─── HELPERS ──────────────────────────────────────── */
-function getAns(q){return q.correctAnswer||q.answer||q.correct_answer||''}
-function matchOpt(q,opt){
-  const ans=String(getAns(q)).trim();
-  if(String(opt).trim()===ans) return true;
-  const opts=q.options||q.Options||[];
-  const idx=opts.indexOf(opt);
-  if(idx>-1){
-    const l=String.fromCharCode(65+idx);
-    if(ans.toUpperCase()===l) return true;
+function saveMockAttempt(result){
+  const key=LS_PREFIX+result.timestamp;
+  localStorage.setItem(key,JSON.stringify(result));
+}
+
+/* Build 100-question set from weightage */
+function buildMockQuestions(){
+  const qs=[];
+  data.forEach(cat=>{
+    const w=cat.weightage||0;
+    if(!w||!cat.data.length)return;
+    const shuffled=[...cat.data].sort(()=>Math.random()-.5);
+    const take=Math.min(w,shuffled.length);
+    for(let i=0;i<take;i++) qs.push({...shuffled[i],_category:cat.title,_chosen:null});
+  });
+  // shuffle final set
+  return qs.sort(()=>Math.random()-.5);
+}
+
+function startMockExam(){
+  mockQuestions=buildMockQuestions();
+  mockTimerSecs=3*60*60;
+  mockTimerStart=null;
+  mockStarted=false;
+  clearInterval(mockTimerInt);
+  renderMockExam();
+}
+
+/* LANDING */
+function renderMockLanding(){
+  clearInterval(mockTimerInt);
+  const attempts=getMockAttempts();
+  const totalW=data.reduce((s,c)=>s+(c.weightage||0),0);
+  let h=`<div class="mock-landing">
+    <div class="mock-hero">
+      <div class="mock-hero-text">
+        <h2>Mock Examination</h2>
+        <p>Simulate the real AIBE with a timed 100-question paper drawn proportionally from all subjects based on their official weightage.</p>
+        <div class="mock-hero-meta">
+          <div class="meta-pill"><span class="mi">📝</span>${totalW} Questions</div>
+          <div class="meta-pill"><span class="mi">⏱</span>3 Hours</div>
+          <div class="meta-pill"><span class="mi">📚</span>${data.length} Subjects</div>
+          <div class="meta-pill"><span class="mi">🔀</span>Randomised</div>
+        </div>
+      </div>
+      <div class="start-btn"><button class="btn btn-primary" id="startMockBtn">🏛 Start Mock Exam</button></div>
+    </div>`;
+
+  /* Trend graph */
+  h+=`<div class="trend-section">
+    <div class="trend-title">Score Trend</div>
+    <div class="trend-sub">Your performance across all attempts</div>
+    <div class="trend-chart-wrap">`;
+  if(attempts.length<1){
+    h+=`<div class="trend-empty">No attempts yet — complete a mock exam to see your trend</div>`;
+  } else {
+    h+=`<canvas id="trendCanvas" class="trend-canvas"></canvas>`;
   }
+  h+=`</div></div>`;
+
+  /* Attempts */
+  h+=`<div class="attempts-section"><div class="attempts-title">Previous Attempts <span class="badge purple">${attempts.length}</span></div>`;
+  if(!attempts.length){
+    h+=`<div style="color:var(--text3);font-size:13px;padding:16px 0">No attempts yet. Start your first mock exam!</div>`;
+  } else {
+    h+=`<div class="attempts-grid">`;
+    attempts.forEach((a,i)=>{
+      const pct=Math.round(a.correct/a.total*100);
+      const date=new Date(a.timestamp).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+      const taken=fmtTime(a.timeTaken||0);
+      const strokePct=pct/100;
+      const circ=2*Math.PI*22;
+      const dash=circ*strokePct;
+      const ringColor=pct>=70?'var(--green)':pct>=40?'var(--orange)':'var(--red)';
+      h+=`<div class="attempt-card">
+        <div class="ac-num">#${attempts.length-i}</div>
+        <div class="ac-info">
+          <div class="ac-date">${date}</div>
+          <div class="ac-sub">Time taken: ${taken}</div>
+          <div class="ac-stats" style="margin-top:8px">
+            <div class="ac-stat"><div class="av" style="color:var(--green)">${a.correct}</div><div class="al">Correct</div></div>
+            <div class="ac-stat"><div class="av" style="color:var(--red)">${a.wrong}</div><div class="al">Wrong</div></div>
+            <div class="ac-stat"><div class="av" style="color:var(--orange)">${a.skipped}</div><div class="al">Skipped</div></div>
+          </div>
+        </div>
+        <div class="ac-score-ring">
+          <svg class="score-ring-svg" width="56" height="56" viewBox="0 0 56 56">
+            <circle class="score-ring-bg" cx="28" cy="28" r="22"/>
+            <circle class="score-ring-fill" cx="28" cy="28" r="22"
+              stroke="${ringColor}"
+              stroke-dasharray="${dash} ${circ}"
+              stroke-dashoffset="0"/>
+          </svg>
+          <div style="position:absolute;inset:0;top:-56px;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          </div>
+        </div>
+        <div style="text-align:center;flex-shrink:0;min-width:52px">
+          <div style="font-family:var(--serif);font-size:26px;font-weight:700;color:${ringColor}">${pct}%</div>
+          <div style="font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em">Score</div>
+          <button class="btn btn-ghost btn-sm" style="margin-top:8px" data-view-result="${a.timestamp}">View</button>
+        </div>
+      </div>`;
+    });
+    h+=`</div>`;
+  }
+  h+=`</div></div>`;
+
+  document.getElementById('mockWrap').innerHTML=h;
+
+  /* Draw trend canvas */
+  if(attempts.length>0){
+    setTimeout(()=>{
+      const canvas=document.getElementById('trendCanvas');
+      if(canvas) drawTrend(canvas,attempts);
+    },100);
+  }
+}
+
+/* TREND LINE CHART (vanilla canvas) */
+function drawTrend(canvas,attempts){
+  const sorted=[...attempts].sort((a,b)=>a.timestamp-b.timestamp);
+  const dpr=window.devicePixelRatio||1;
+  const W=canvas.offsetWidth,H=140;
+  canvas.width=W*dpr;canvas.height=H*dpr;
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  const pad={t:16,b:28,l:36,r:16};
+  const cw=W-pad.l-pad.r,ch=H-pad.t-pad.b;
+  const scores=sorted.map(a=>Math.round(a.correct/a.total*100));
+  const minS=Math.max(0,Math.min(...scores)-10),maxS=Math.min(100,Math.max(...scores)+10);
+  const xs=scores.map((_,i)=>pad.l+(i/(Math.max(scores.length-1,1)))*cw);
+  const ys=scores.map(s=>pad.t+ch-(s-minS)/(maxS-minS||1)*ch);
+
+  // grid lines
+  ctx.strokeStyle='rgba(255,255,255,.05)';ctx.lineWidth=1;
+  [0,25,50,75,100].forEach(v=>{
+    if(v<minS||v>maxS)return;
+    const y=pad.t+ch-(v-minS)/(maxS-minS||1)*ch;
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+cw,y);ctx.stroke();
+    ctx.fillStyle='rgba(255,255,255,.25)';ctx.font='10px Outfit,sans-serif';
+    ctx.textAlign='right';ctx.fillText(v+'%',pad.l-4,y+3.5);
+  });
+
+  // gradient fill under line
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+  grad.addColorStop(0,'rgba(167,139,250,.25)');
+  grad.addColorStop(1,'rgba(167,139,250,.02)');
+  ctx.beginPath();ctx.moveTo(xs[0],ys[0]);
+  for(let i=1;i<xs.length;i++){
+    const mx=(xs[i-1]+xs[i])/2;
+    ctx.bezierCurveTo(mx,ys[i-1],mx,ys[i],xs[i],ys[i]);
+  }
+  ctx.lineTo(xs[xs.length-1],pad.t+ch);ctx.lineTo(xs[0],pad.t+ch);ctx.closePath();
+  ctx.fillStyle=grad;ctx.fill();
+
+  // line
+  ctx.beginPath();ctx.moveTo(xs[0],ys[0]);
+  for(let i=1;i<xs.length;i++){
+    const mx=(xs[i-1]+xs[i])/2;
+    ctx.bezierCurveTo(mx,ys[i-1],mx,ys[i],xs[i],ys[i]);
+  }
+  ctx.strokeStyle='rgba(167,139,250,.9)';ctx.lineWidth=2;ctx.stroke();
+
+  // dots + labels
+  xs.forEach((x,i)=>{
+    ctx.beginPath();ctx.arc(x,ys[i],4,0,Math.PI*2);
+    ctx.fillStyle=scores[i]>=70?'#3ecf8e':scores[i]>=40?'#fb923c':'#f06a6a';ctx.fill();
+    ctx.strokeStyle='#0c0f14';ctx.lineWidth=2;ctx.stroke();
+    // x-axis label
+    const d=new Date(sorted[i].timestamp);
+    const lbl=`#${i+1}`;
+    ctx.fillStyle='rgba(255,255,255,.4)';ctx.font='9px Outfit,sans-serif';ctx.textAlign='center';
+    ctx.fillText(lbl,x,H-6);
+  });
+}
+
+/* RENDER ACTIVE EXAM */
+function renderMockExam(){
+  let h=`<div class="mock-exam-active">
+    <div class="mock-exam-header">
+      <div class="meh-title">📝 Mock Examination <span style="font-size:13px;color:var(--text3);font-family:var(--sans)">(${mockQuestions.length} Questions)</span></div>
+      <div class="timer-wrap">
+        <span class="timer-icon">⏱</span>
+        <div>
+          <div class="timer-val" id="timerVal">${fmtTimer(mockTimerSecs)}</div>
+          <div class="timer-status" id="timerStatus">Starts on first answer</div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-progress-bar"><div class="mock-progress-fill" id="mockProgFill" style="width:0%"></div></div>`;
+
+  mockQuestions.forEach((q,i)=>{
+    const opts=q.options||[];
+    h+=`<div class="mock-q-card" id="mqc${i}">
+      <div class="mock-q-tag">Q ${i+1}</div>
+      <div class="q-cat-tag">${q._category||''}</div>
+      <div class="mock-q-text">${q.question||''}</div>
+      <div class="mock-opts">`;
+    opts.forEach((o,oi)=>{
+      const key=String.fromCharCode(65+oi);
+      const sel=q._chosen===o;
+      h+=`<button class="mock-opt ${sel?'selected':''}" data-mqi="${i}" data-oi="${oi}">
+        <span class="mock-opt-key">${key}</span><span>${o}</span></button>`;
+    });
+    h+=`</div></div>`;
+  });
+
+  const answered=mockQuestions.filter(q=>q._chosen).length;
+  const skipped=mockQuestions.length-answered;
+  h+=`<div class="mock-submit-area">
+    <div class="msa-info">
+      <h3>Ready to Submit?</h3>
+      <p>Review all questions before submitting. Unanswered questions will be marked as skipped.</p>
+      <div class="msa-counts">
+        <span class="msa-count c-ans">✦ ${answered} Answered</span>
+        <span class="msa-count c-skip">◌ ${skipped} Unanswered</span>
+      </div>
+    </div>
+    <button class="btn btn-accent" id="submitMockBtn">Submit Exam →</button>
+  </div></div>`;
+
+  document.getElementById('mockWrap').innerHTML=h;
+}
+
+function updateMockProgress(){
+  const answered=mockQuestions.filter(q=>q._chosen).length;
+  const fill=document.getElementById('mockProgFill');
+  if(fill) fill.style.width=(answered/mockQuestions.length*100)+'%';
+  // Update submit area counts
+  const c1=document.querySelector('.msa-count.c-ans');
+  const c2=document.querySelector('.msa-count.c-skip');
+  if(c1) c1.textContent=`✦ ${answered} Answered`;
+  if(c2) c2.textContent=`◌ ${mockQuestions.length-answered} Unanswered`;
+}
+
+function selectMockOpt(mqi,oi){
+  const q=mockQuestions[mqi];
+  if(!q)return;
+  // Start timer on first answer
+  if(!mockStarted){
+    mockStarted=true;
+    mockTimerStart=Date.now();
+    startTimer();
+    const st=document.getElementById('timerStatus');
+    if(st) st.textContent='Time remaining';
+  }
+  q._chosen=q.options[oi];
+  // Update card visuals
+  const card=document.getElementById(`mqc${mqi}`);
+  if(card){
+    card.classList.add('mock-q-answered');
+    card.querySelector('.mock-q-tag').textContent=`Q ${mqi+1} ✓`;
+    card.querySelectorAll('.mock-opt').forEach((b,i)=>{
+      b.classList.remove('selected');
+      if(i===oi) b.classList.add('selected');
+    });
+  }
+  updateMockProgress();
+}
+
+/* TIMER */
+function startTimer(){
+  clearInterval(mockTimerInt);
+  mockTimerInt=setInterval(()=>{
+    const elapsed=Math.floor((Date.now()-mockTimerStart)/1000);
+    const remaining=Math.max(0,mockTimerSecs-elapsed);
+    const el=document.getElementById('timerVal');
+    if(el){
+      el.textContent=fmtTimer(remaining);
+      el.className='timer-val'+(remaining<600?' danger':remaining<1800?' warning':'');
+    }
+    if(remaining<=0){clearInterval(mockTimerInt);submitMockExam(true);}
+  },1000);
+}
+
+function fmtTimer(secs){
+  const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+function fmtTime(secs){
+  if(!secs)return '—';
+  const h=Math.floor(secs/3600),m=Math.floor((secs%3600)/60),s=secs%60;
+  if(h>0) return `${h}h ${m}m`;
+  if(m>0) return `${m}m ${s}s`;
+  return `${s}s`;
+}
+
+/* SUBMIT */
+function submitMockExam(autoSubmit=false){
+  clearInterval(mockTimerInt);
+  const timeTaken=mockTimerStart?Math.floor((Date.now()-mockTimerStart)/1000):0;
+  let correct=0,wrong=0,skipped=0;
+  const categoryBreakdown={};
+  mockQuestions.forEach(q=>{
+    const cat=q._category||'Unknown';
+    if(!categoryBreakdown[cat]) categoryBreakdown[cat]={total:0,correct:0,wrong:0,skipped:0};
+    categoryBreakdown[cat].total++;
+    if(!q._chosen){skipped++;categoryBreakdown[cat].skipped++;}
+    else if(matchOpt(q,q._chosen)){correct++;categoryBreakdown[cat].correct++;}
+    else{wrong++;categoryBreakdown[cat].wrong++;}
+  });
+  const ts=Date.now();
+  const result={
+    timestamp:ts,total:mockQuestions.length,correct,wrong,skipped,
+    timeTaken,score:Math.round(correct/mockQuestions.length*100),
+    categoryBreakdown,
+    questions:mockQuestions.map(q=>({
+      question:q.question,options:q.options,correctAnswer:q.correctAnswer,
+      rationale:q.rationale||'',category:q._category||'',chosen:q._chosen||null
+    }))
+  };
+  saveMockAttempt(result);
+  renderResultScreen(result);
+}
+
+/* ══════════════════════════════════════════════
+   RESULT SCREEN
+══════════════════════════════════════════════ */
+let currentFilter='all';
+
+function renderResultScreen(result){
+  clearInterval(mockTimerInt);
+  const pct=result.score;
+  const date=new Date(result.timestamp).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'});
+  const grade=pct>=75?'Excellent':pct>=60?'Good':pct>=45?'Average':'Needs Work';
+  const gradeColor=pct>=75?'var(--green)':pct>=60?'var(--blue)':pct>=45?'var(--orange)':'var(--red)';
+
+  let h=`<div class="result-screen">
+    <button class="result-back" id="resultBack">← Back to Mock Exam</button>
+    <div class="result-hero">
+      <div class="rh-top">
+        <div class="rh-score">
+          <div class="big">${pct}%</div>
+          <div class="lbl" style="color:${gradeColor};font-weight:700">${grade}</div>
+        </div>
+        <div class="rh-details">
+          <h2>Mock Exam Result</h2>
+          <div class="rh-date"><span>📅 ${date}</span><span>⏱ ${fmtTime(result.timeTaken)}</span></div>
+          <div class="rh-stats">
+            <div class="rh-stat"><div class="sv" style="color:var(--green)">${result.correct}</div><span class="sl">Correct</span></div>
+            <div class="rh-stat"><div class="sv" style="color:var(--red)">${result.wrong}</div><span class="sl">Wrong</span></div>
+            <div class="rh-stat"><div class="sv" style="color:var(--orange)">${result.skipped}</div><span class="sl">Skipped</span></div>
+            <div class="rh-stat"><div class="sv" style="color:var(--text)">${result.total}</div><span class="sl">Total</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>Overall Breakdown</h3>
+        <div class="chart-container" style="flex-direction:row;align-items:center;justify-content:flex-start;gap:0">
+          <div class="donut-wrap" id="donutWrap">
+            <svg id="donutSvg" width="160" height="160" viewBox="0 0 160 160"></svg>
+            <div class="donut-center"><div class="dc-num">${pct}%</div><div class="dc-lbl">Score</div></div>
+          </div>
+          <div class="donut-legend">
+            <div class="dl-item"><div class="dl-dot" style="background:var(--green)"></div><span class="dl-label">Correct</span><span class="dl-val">${result.correct}</span></div>
+            <div class="dl-item"><div class="dl-dot" style="background:var(--red)"></div><span class="dl-label">Wrong</span><span class="dl-val">${result.wrong}</span></div>
+            <div class="dl-item"><div class="dl-dot" style="background:var(--orange)"></div><span class="dl-label">Skipped</span><span class="dl-val">${result.skipped}</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h3>Category-wise Performance</h3>
+        <div class="cat-bars" id="catBars"></div>
+      </div>
+    </div>`;
+
+  /* Filter tabs */
+  h+=`<div class="filter-tabs">
+    <button class="filter-tab active" data-filter="all">All (${result.total})</button>
+    <button class="filter-tab ft-correct" data-filter="correct">✓ Correct (${result.correct})</button>
+    <button class="filter-tab ft-wrong" data-filter="wrong">✗ Wrong (${result.wrong})</button>
+    <button class="filter-tab ft-skip" data-filter="skip">◌ Skipped (${result.skipped})</button>
+  </div>
+  <div id="resultQList"></div>
+  </div>`;
+
+  document.getElementById('mockWrap').innerHTML=h;
+  currentFilter='all';
+
+  /* Draw donut */
+  setTimeout(()=>{
+    drawDonut(result);
+    drawCatBars(result);
+    renderResultQList(result,'all');
+  },80);
+}
+
+function drawDonut(result){
+  const svg=document.getElementById('donutSvg');if(!svg)return;
+  const cx=80,cy=80,r=60,sw=14;
+  const total=result.total;
+  const slices=[
+    {val:result.correct,color:'#3ecf8e'},
+    {val:result.wrong,color:'#f06a6a'},
+    {val:result.skipped,color:'#fb923c'}
+  ];
+  const circ=2*Math.PI*r;
+  let offset=0;
+  let svgHtml=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--border2)" stroke-width="${sw}"/>`;
+  slices.forEach(s=>{
+    if(!s.val)return;
+    const pct=s.val/total;
+    const dash=circ*pct;
+    svgHtml+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.color}" stroke-width="${sw}"
+      stroke-dasharray="${dash} ${circ}" stroke-dashoffset="${-offset}"
+      stroke-linecap="butt" style="transform:rotate(-90deg);transform-origin:50% 50%"/>`;
+    offset+=dash;
+  });
+  svg.innerHTML=svgHtml;
+}
+
+function drawCatBars(result){
+  const el=document.getElementById('catBars');if(!el)return;
+  const bd=result.categoryBreakdown;
+  el.innerHTML=Object.entries(bd).map(([cat,s])=>{
+    const pct=s.total?Math.round(s.correct/s.total*100):0;
+    const wPct=s.total?Math.round(s.wrong/s.total*100):0;
+    return `<div class="cat-bar-row">
+      <div class="cb-label" title="${cat}">${cat}</div>
+      <div class="cb-track">
+        <div class="cb-fill-correct" style="width:${pct}%"></div>
+        <div class="cb-fill-wrong" style="left:${pct}%;width:${wPct}%"></div>
+      </div>
+      <div class="cb-val">${s.correct}/${s.total}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderResultQList(result,filter){
+  currentFilter=filter;
+  document.querySelectorAll('.filter-tab').forEach(t=>{
+    t.classList.remove('active');
+    if(t.dataset.filter===filter) t.classList.add('active');
+  });
+  const el=document.getElementById('resultQList');if(!el)return;
+  const qs=result.questions.filter(q=>{
+    if(filter==='all')return true;
+    if(filter==='correct')return q.chosen&&matchOptRaw(q,q.chosen);
+    if(filter==='wrong')return q.chosen&&!matchOptRaw(q,q.chosen);
+    if(filter==='skip')return !q.chosen;
+  });
+  if(!qs.length){el.innerHTML=`<div style="color:var(--text3);padding:20px 0;font-size:13px">No questions in this category.</div>`;return;}
+  el.innerHTML=qs.map((q,li)=>{
+    const isCorrect=q.chosen&&matchOptRaw(q,q.chosen);
+    const isSkipped=!q.chosen;
+    const status=isSkipped?'skip':isCorrect?'ok':'no';
+    const statusLabel=isSkipped?'◌ Skipped':isCorrect?'✓ Correct':'✗ Wrong';
+    const opts=q.options||[];
+    let optsHtml=opts.map((o,oi)=>{
+      const key=String.fromCharCode(65+oi);
+      const isAns=matchOptRaw(q,o);
+      const isChosen=q.chosen===o;
+      let cls='rq-opt';
+      if(isAns) cls+=' rq-correct';
+      else if(isChosen&&!isAns) cls+=' rq-chosen-wrong';
+      else if(isSkipped&&isAns) cls+=' rq-skipped-correct';
+      return `<div class="${cls}"><span class="rq-opt-key">${key}</span><span>${o}</span></div>`;
+    }).join('');
+    return `<div class="rq-card" style="animation-delay:${Math.min(li,.5)*.05}s">
+      <div class="rq-header">
+        <span class="rq-num">Q ${result.questions.indexOf(q)+1}</span>
+        <span class="rq-status ${status}">${statusLabel}</span>
+        <span class="rq-cat">${q.category||''}</span>
+      </div>
+      <div class="rq-text">${q.question}</div>
+      <div class="rq-options">${optsHtml}</div>
+      ${q.rationale?`<div class="rq-rationale"><span class="rl">💡 Rationale</span>${q.rationale}</div>`:''}
+    </div>`;
+  }).join('');
+}
+
+/* helpers */
+function matchOptRaw(q,opt){
+  const ans=String(q.correctAnswer||'').trim();
+  if(String(opt).trim()===ans)return true;
+  const opts=q.options||[];const idx=opts.indexOf(opt);
+  if(idx>-1){const l=String.fromCharCode(65+idx);if(ans.toUpperCase()===l)return true;}
   return false;
 }
-function isOk(q,chosen){return chosen!==null&&chosen!==undefined&&matchOpt(q,chosen)}
+
+/* ══════════════════════════════════════════════
+   SHARED HELPERS
+══════════════════════════════════════════════ */
+function getAns(q){return q.correctAnswer||q.answer||''}
+function matchOpt(q,opt){
+  const ans=String(getAns(q)).trim();
+  if(String(opt).trim()===ans)return true;
+  const opts=q.options||q.Options||[];const idx=opts.indexOf(opt);
+  if(idx>-1){const l=String.fromCharCode(65+idx);if(ans.toUpperCase()===l)return true;}
+  return false;
+}
+function isOk(q,chosen){return chosen!=null&&matchOpt(q,chosen)}
 function pages(cur,total){
-  if(total<=7) return Array.from({length:total},(_,i)=>i);
-  if(cur<4)       return [0,1,2,3,4,'…',total-1];
-  if(cur>total-5) return [0,'…',total-5,total-4,total-3,total-2,total-1];
-  return [0,'…',cur-1,cur,cur+1,'…',total-1];
+  if(total<=7)return Array.from({length:total},(_,i)=>i);
+  if(cur<4)return[0,1,2,3,4,'…',total-1];
+  if(cur>total-5)return[0,'…',total-5,total-4,total-3,total-2,total-1];
+  return[0,'…',cur-1,cur,cur+1,'…',total-1];
 }
 
-/* ─── EVENT DELEGATION ─────────────────────────────── */
-document.addEventListener('click', e=>{
-  const btn=e.target.closest('button');
-  if(!btn) return;
+/* ══════════════════════════════════════════════
+   EVENT DELEGATION
+══════════════════════════════════════════════ */
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('button,button *')?e.target.closest('button'):null;
+  if(!btn)return;
 
-  // Mode toggle
-  if(btn.dataset.mode){ setMode(btn.dataset.mode); return; }
-
-  // Sidebar cat
-  if(btn.dataset.cat!==undefined){ show(+btn.dataset.cat); return; }
-
-  // Option click
-  if(btn.classList.contains('opt') && !btn.disabled){
-    const ci=+btn.dataset.ci, qi=+btn.dataset.qi, oi=+btn.dataset.oi;
-    if(mode==='exam'){
-      selectExamOpt(ci,qi,oi);
+  /* Nav tabs */
+  if(btn.dataset.nav){setView(btn.dataset.nav);return;}
+  /* Mode toggle */
+  if(btn.dataset.mode){
+    pMode=btn.dataset.mode;
+    document.querySelectorAll('.mode-btn').forEach(b=>b.className='mode-btn'+(b.dataset.mode===pMode?' active-'+pMode:''));
+    showPractice(pCat);return;
+  }
+  /* Sidebar cat */
+  if(btn.dataset.cat!==undefined){showPractice(+btn.dataset.cat);return;}
+  /* Practice option */
+  if(btn.classList.contains('opt')&&!btn.disabled){
+    const ci=+btn.dataset.ci,qi=+btn.dataset.qi,oi=+btn.dataset.oi;
+    if(pMode==='exam')selectExamOpt(ci,qi,oi);return;
+  }
+  /* Check answer */
+  if(btn.dataset.checkCi!==undefined){checkPracticeAnswer(+btn.dataset.checkCi,+btn.dataset.checkQi);return;}
+  /* Pagination */
+  if(btn.dataset.pgCi!==undefined){pPg[+btn.dataset.pgCi]=+btn.dataset.pg;showPractice(+btn.dataset.pgCi);return;}
+  /* Reset section */
+  if(btn.dataset.resetCi!==undefined){
+    const ci=+btn.dataset.resetCi;pPg[ci]=0;data[ci].data.forEach((_,qi)=>initQ(ci,qi));
+    syncSBProgress();syncHeader();showPractice(ci);return;
+  }
+  /* Start mock */
+  if(btn.id==='startMockBtn'){startMockExam();return;}
+  /* Submit mock */
+  if(btn.id==='submitMockBtn'){
+    const answered=mockQuestions.filter(q=>q._chosen).length;
+    const msg=answered<mockQuestions.length?`You have ${mockQuestions.length-answered} unanswered question(s). They will be marked as skipped. Submit anyway?`:'Submit the exam?';
+    if(confirm(msg))submitMockExam();return;
+  }
+  /* Mock option */
+  if(btn.dataset.mqi!==undefined){selectMockOpt(+btn.dataset.mqi,+btn.dataset.oi);return;}
+  /* View past result */
+  if(btn.dataset.viewResult){
+    const ts=+btn.dataset.viewResult;
+    const raw=localStorage.getItem(LS_PREFIX+ts);
+    if(raw){try{renderResultScreen(JSON.parse(raw));}catch(e){alert('Could not load result.');}}
+    return;
+  }
+  /* Result back */
+  if(btn.id==='resultBack'){renderMockLanding();return;}
+  /* Result filter */
+  if(btn.dataset.filter){
+    const raw=document.getElementById('resultQList');
+    if(!raw)return;
+    // find current result from DOM context — re-render with filter
+    // We store it in a closure via re-render approach
+    // Grab result from last saved attempt matching current screen
+    const attempts=getMockAttempts();
+    // find which result is currently shown by checking the date
+    // simplest: store current result ts in a data attr on result-screen
+    const rs=document.querySelector('.result-screen');
+    if(rs&&rs.dataset.ts){
+      const r=JSON.parse(localStorage.getItem(LS_PREFIX+rs.dataset.ts)||'null');
+      if(r){renderResultQList(r,btn.dataset.filter);return;}
     }
-    // Study mode options are disabled, so no action needed
     return;
   }
-
-  // Check answer (exam mode)
-  if(btn.dataset.checkCi!==undefined){
-    checkAnswer(+btn.dataset.checkCi, +btn.dataset.checkQi);
-    return;
-  }
-
-  // Pagination
-  if(btn.dataset.pgCi!==undefined){ goP(+btn.dataset.pgCi, +btn.dataset.pg); return; }
-
-  // Reset
-  if(btn.dataset.resetCi!==undefined){ reset(+btn.dataset.resetCi); return; }
 });
+
+/* Store current result ts for filter clicks */
+const _origRRS=renderResultScreen;
+renderResultScreen=function(result){
+  _origRRS(result);
+  setTimeout(()=>{
+    const rs=document.querySelector('.result-screen');
+    if(rs) rs.dataset.ts=result.timestamp;
+  },100);
+};
 
 boot();
 </script>
